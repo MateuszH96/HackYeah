@@ -1,0 +1,7 @@
+frontend/.gitignore
+backend/.gitignore
+.venv
+*.log
+.idea/
+.DS_Store
+.vscode/
