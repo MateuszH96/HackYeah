@@ -1,13 +1,13 @@
 # Install Dependencies
 
-Create virtual envirement linux/MacOs
+Create virtual environment linux/MacOs
 ```
 pip install venv
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-Create virtual envirement Windows
+Create virtual environment Windows
 ```
 pip install venv
 python -m venv .venv
