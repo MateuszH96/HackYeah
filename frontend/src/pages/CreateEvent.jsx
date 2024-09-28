@@ -38,7 +38,6 @@ function CreateEvent() {
 
   const handleOnClick = async (e) => {
     e.preventDefault();
-    console.log(eventData); 
     const location = {
       name: eventData.location,
       google_url: eventData.url_location
@@ -55,7 +54,6 @@ function CreateEvent() {
     try{
       const url = URL_SEVER + PATH_MEETING;
       const response = await myApi(url, "POST", data);
-      console.log("returned state:", response);
       if (response.status === 201){
         navigate("/events")
       }
