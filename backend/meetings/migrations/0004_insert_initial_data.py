@@ -66,7 +66,7 @@ def insert_initial_data(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('meetings', '0002_location_name'),
+        ('meetings', '0003_alter_location_google_url'),
     ]
 
     operations = [
