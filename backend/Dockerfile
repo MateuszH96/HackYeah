@@ -15,7 +15,7 @@ COPY ./backend/requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project into the container
-COPY . /app/
+COPY ./backend/ /app/
 
 # Expose the port the app runs on
 EXPOSE 8000
