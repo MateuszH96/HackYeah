@@ -2,7 +2,7 @@ from django.db import models
 
 class Location(models.Model):
     name = models.CharField(max_length=100, default="Location")
-    google_url = models.URLField(null=True, blank=True)  # Allow null in DB and blank in forms
+    google_url = models.TextField(null=True, blank=True)  # Allow null in DB and blank in forms
     lat_long = models.CharField(max_length=255, null=True, blank=True)  # Allow null values
 
     def __str__(self):
