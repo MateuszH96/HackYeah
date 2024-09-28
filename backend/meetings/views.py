@@ -17,8 +17,19 @@ class MeetingView(APIView):
     def get(self, request):
         page_number = request.GET.get('page', 1) 
         limit = request.GET.get('limit', 10) 
+        search = request.GET.get('search', '') 
+        sort = request.GET.get('sort', '')
+        sort_order = request.GET.get('order', 'ASC')
 
-        meeting_data = Meeting.objects.all()
+        meeting_data = Meeting.objects.filter(
+            models.Q(title__icontains=search) | 
+            models.Q(description__icontains=search) 
+        )
+
+        if sort in ['date', 'title']:    
+            if sort_order == 'desc' or sort_order == "DESC":
+                sort = f'-{sort}'
+            meeting_data =  meeting_data.order_by(sort)
 
         paginator = Paginator(meeting_data, limit)
         page = paginator.get_page(page_number)
@@ -44,8 +55,10 @@ class MeetingView(APIView):
             if location_serializer.is_valid():
                 location = location_serializer.save()  # Zapisuje lokalizację, jeśli jest nowa
             else:
+                print("dupa1")
                 return Response(location_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
+            print("dupa2")
             return Response({"error": "Location data is required."}, status=status.HTTP_400_BAD_REQUEST)
 
         # Przetwarzanie kategorii
@@ -69,6 +82,7 @@ class MeetingView(APIView):
             meeting.categories.set(categories)  # Ustawia kategorie
             return Response(serializer_meeting.data, status=status.HTTP_201_CREATED)
 
+        print("dupa3")
         return Response(serializer_meeting.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -85,7 +99,7 @@ class CategoryView(APIView):
         if serializer_category.is_valid():
             serializer_category.save()
             return Response(serializer_category.data,status=status.HTTP_201_CREATED)
-        
+        print("dupa4")
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class LocationView(APIView):
@@ -108,5 +122,5 @@ class LocationView(APIView):
             
             return Response(serializer_location.data, status=status.HTTP_201_CREATED)
         
-        
+        print("dupa5")
         return Response(serializer_location.errors, status=status.HTTP_400_BAD_REQUEST)

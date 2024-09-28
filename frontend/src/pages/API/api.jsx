@@ -1,6 +1,6 @@
 import { HEADER } from "./constant.jsx";
 async function myApi(_link, _method, _data = null, _header = HEADER) {
-
+  console.log(_data)
   try {
     if (_method === "GET") {
       const response = await fetch(_link);
