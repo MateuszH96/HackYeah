@@ -11,12 +11,28 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Meeting, Location, Category
 from .serializers import MeetingSerializer, LocationSerializer
+from django.core.paginator import Paginator
 
 class MeetingView(APIView):
     def get(self, request):
+        page_number = request.GET.get('page', 1) 
+        limit = request.GET.get('limit', 10) 
+
         meeting_data = Meeting.objects.all()
-        serializer_meeting = MeetingSerializer(meeting_data, many=True).data
-        return Response(serializer_meeting)
+
+        paginator = Paginator(meeting_data, limit)
+        page = paginator.get_page(page_number)
+
+        serializer_meeting = MeetingSerializer(page.object_list, many=True).data
+
+        response_data = {
+            'total_count': paginator.count,
+            'total_pages': paginator.num_pages,
+            'current_page': page.number,
+            'objects': list(serializer_meeting),  # Serialize your objects here
+        }
+
+        return Response(response_data)
 
     def post(self, request):
         # Uzyskiwanie danych lokalizacji
