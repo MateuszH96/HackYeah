@@ -9,16 +9,18 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY ./backend/requirements.txt /app/
+COPY requirements.txt /app/
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project into the container
-COPY ./backend/ /app/
+COPY . /app/
 
 # Expose the port the app runs on
 EXPOSE 8000
+
+RUN python manage.py migrate
 
 # Command to run the application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
