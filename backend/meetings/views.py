@@ -17,8 +17,12 @@ class MeetingView(APIView):
     def get(self, request):
         page_number = request.GET.get('page', 1) 
         limit = request.GET.get('limit', 10) 
+        search = request.GET.get('search', '') 
 
-        meeting_data = Meeting.objects.all()
+        meeting_data = Meeting.objects.filter(
+            models.Q(title__icontains=search) | 
+            models.Q(description__icontains=search) 
+        )
 
         paginator = Paginator(meeting_data, limit)
         page = paginator.get_page(page_number)
