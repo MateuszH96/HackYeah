@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import myApi from "./API/api"
+import { URL_SEVER, PATH_CATEGORY } from "./API/constant";
 function CreateEvent() {
   const [eventData, setEventData] = useState({
     title: "",
@@ -11,7 +12,22 @@ function CreateEvent() {
   });
   
   const [category, setCategory] = useState(["Opcja1", "Opcja2", "Opcja3"]);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = URL_SEVER + PATH_CATEGORY;
+        console.log(url)
+        const response  = await myApi(url, "GET");
+        console.log(response);
+        const categories = response.map(item => item.name);
+        setCategory(categories);
+      }catch(err){
+        console.error("Error during fetch data", err)
+      }
+    }
+    fetchData()
+    //const response = await myApi(URL_SEVER,"GET")
+  },[]) 
   const handleChange = (e) => {
     setEventData({
       ...eventData,
