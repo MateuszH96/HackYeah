@@ -1,32 +1,33 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import myApi from "./API/api"
-import { URL_SEVER, PATH_CATEGORY } from "./API/constant";
+import { URL_SEVER, PATH_CATEGORY, PATH_MEETING } from "./API/constant";
 function CreateEvent() {
   const [eventData, setEventData] = useState({
     title: "",
     description: "",
     date: "",
-    category: "",
+    category: "1",
     location: "",
     url_location: ""
   });
-  
-  const [category, setCategory] = useState(["Opcja1", "Opcja2", "Opcja3"]);
+  const navigate = useNavigate()
+  const [category, setCategory] = useState([{id:1, name:"Opcja1"},{id:2, name:"Opcja2"},{id:3, name:"Opcja3"}]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const url = URL_SEVER + PATH_CATEGORY;
-        console.log(url)
         const response  = await myApi(url, "GET");
-        console.log(response);
-        const categories = response.map(item => item.name);
+        const categories = response.map(item => ({
+          id: item.id,
+          name: item.name
+        }));
         setCategory(categories);
       }catch(err){
         console.error("Error during fetch data", err)
       }
     }
     fetchData()
-    //const response = await myApi(URL_SEVER,"GET")
   },[]) 
   const handleChange = (e) => {
     setEventData({
@@ -35,9 +36,33 @@ function CreateEvent() {
     });
   };
 
-  const handleOnClick = (e) => {
+  const handleOnClick = async (e) => {
     e.preventDefault();
     console.log(eventData); 
+    const location = {
+      name: eventData.location,
+      google_url: eventData.url_location
+    }
+    const date = new Date(eventData.date); 
+    const formattedDate = date.toISOString(); 
+    const data = {
+      title: eventData.title,
+      description: eventData.description,
+      date: formattedDate,
+      location: location,
+      categories: [parseInt(eventData.category)]
+    };
+    try{
+      const url = URL_SEVER + PATH_MEETING;
+      const response = await myApi(url, "POST", data);
+      console.log("returned state:", response);
+      if (response.status === 201){
+        navigate("/events")
+      }
+    }catch(error){
+      console.error("Error during create event:",error)
+    }
+
   };
 
   return (
@@ -78,8 +103,8 @@ function CreateEvent() {
           onChange={handleChange}
         >
           {category.map((cat, index) => (
-            <option key={index} value={cat}>
-              {cat}
+            <option key={cat.id} value={cat.id}>
+              {cat.name}
             </option>
           ))}
         </select>
