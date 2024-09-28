@@ -1,0 +1,17 @@
+#nav-links {
+  display: flex;
+  justify-content: flex-end;
+  top: 0px;
+  position: sticky;
+  z-index: 1;
+
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  padding: clamp(10px, 1vh, 20px) clamp(20px, 1vw, 40px)
+    /*1vw*/
+  ;
+  font-size: clamp(20px, 2.1vh, 25px);
+}
