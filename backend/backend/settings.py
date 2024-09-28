@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@l!f$v0jsv&qc%(h*i8uahd#^d(!lg2s1j70&kbi!f#c#6km#@
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "wellness.jacekku.net"
+    "wellness.jacekku.net",'127.0.0.1', 'localhost'
 ]
 
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'meetings'
+    'meetings',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
