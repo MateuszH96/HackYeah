@@ -18,11 +18,18 @@ class MeetingView(APIView):
         page_number = request.GET.get('page', 1) 
         limit = request.GET.get('limit', 10) 
         search = request.GET.get('search', '') 
+        sort = request.GET.get('sort', '')
+        sort_order = request.GET.get('order', 'ASC')
 
         meeting_data = Meeting.objects.filter(
             models.Q(title__icontains=search) | 
             models.Q(description__icontains=search) 
         )
+
+        if sort in ['date', 'title']:    
+            if sort_order == 'desc' or sort_order == "DESC":
+                sort = f'-{sort}'
+            meeting_data =  meeting_data.order_by(sort)
 
         paginator = Paginator(meeting_data, limit)
         page = paginator.get_page(page_number)
