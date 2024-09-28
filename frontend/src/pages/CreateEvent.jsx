@@ -25,20 +25,20 @@ function CreateEvent() {
   };
 
   return (
-    <>
-      <form action="POST">
-        <label>Tytuł</label>
-        <br />
+    <div className="page">
+      <form className = "form-container" action="POST">
+        <label className="form-label">Tytuł</label>
+        
         <input
+          className="form-input"
           type="text"
           name="title"
           value={eventData.title}
           onChange={handleChange}
         />
-        <br />
-        <label>Opis wydarzenia</label>
-        <br />
+        <label className="form-label">Opis wydarzenia</label>
         <textarea
+        className="event_text"
           rows="10"
           cols="100"
           name="description"
@@ -46,19 +46,17 @@ function CreateEvent() {
           onChange={handleChange}
           placeholder="Wpisz tutaj opis wydarzenia"
         />
-        <br />
-        <label>Data wydarzenia</label>
-        <br />
+        <label className="form-label">Data wydarzenia</label>
         <input
+          className="date_input"
           type="date"
           name="date"
           value={eventData.date}
           onChange={handleChange}
-        />
-        <br />
-        <label>Kategoria</label>
-        <br />
+        />        
+        <label className="form-label">Kategoria</label>
         <select
+          className="category_select"
           name="category"
           value={eventData.category}
           onChange={handleChange}
@@ -69,28 +67,25 @@ function CreateEvent() {
             </option>
           ))}
         </select>
-        <br />
-        <label>Lokalizacja</label>
-        <br />
+        <label className="form-label">Lokalizacja</label>
         <input
+          className="location_input"
           type="text"
           name="location"
           value={eventData.location}
           onChange={handleChange}
         />
-        <br />
-        <label>Link</label>
-        <br />
+        <label className="form-label">Link</label>
         <input
+          className="link_input"
           type="text"
           name="url_location"
           value={eventData.url_location}
           onChange={handleChange}
         />
-        <br />
-        <button onClick={handleOnClick}>Kliknij</button>
+        <button className="button" onClick={handleOnClick}>Kliknij</button>
       </form>
-    </>
+    </div>
   );
 }
 

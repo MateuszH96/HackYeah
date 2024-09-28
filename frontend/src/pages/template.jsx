@@ -20,6 +20,9 @@ function Template({ children }) {
         <a className="nav-link" onClick={() => handleClickLink("/create_event")}>
           Stwórz wydarzenie
         </a>
+        <a className="nav-link" onClick={() => handleClickLink("/create_event")}>
+          Zaloguj
+        </a>
       </nav>
       <div className="container">{children}</div>
     </div>
