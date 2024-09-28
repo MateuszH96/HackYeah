@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import myApi from "./API/api"
-import { URL_SEVER, PATH_CATEGORY } from "./API/constant";
+import { URL_SEVER, PATH_CATEGORY } from "./API/constant"
+import exampleImage from '../assets/tloo.jpeg';
 function CreateEvent() {
   const [eventData, setEventData] = useState({
     title: "",
@@ -40,11 +41,14 @@ function CreateEvent() {
     console.log(eventData); 
   };
 
+  function App(){}
+
   return (
     <div className="page">
+      <div className="content-container">
       <form className = "form-container" action="POST">
+      <h1>Utwórz wydarzenie!</h1>
         <label className="form-label">Tytuł</label>
-        
         <input
           className="form-input"
           type="text"
@@ -99,8 +103,12 @@ function CreateEvent() {
           value={eventData.url_location}
           onChange={handleChange}
         />
-        <button className="button" onClick={handleOnClick}>Kliknij</button>
+        <button className="button" onClick={handleOnClick}>Utwórz</button>
       </form>
+      <div className="image-container">
+        <img src={exampleImage} alt="Event" /> {/* Użyj obrazka */}
+      </div>
+    </div>
     </div>
   );
 }

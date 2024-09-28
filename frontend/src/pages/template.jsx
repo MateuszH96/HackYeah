@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import exampleImage from '../assets/logo.jpeg'
 function Template({ children }) {
   const navigate = useNavigate();
 
@@ -11,6 +12,9 @@ function Template({ children }) {
   return (
     <div>
       <nav id="nav-links">
+        <div className="logo">
+          <img src = {exampleImage} alt="logo"/>
+        </div>
         <a className="nav-link" onClick={() => handleClickLink("/")}>
           Home
         </a>

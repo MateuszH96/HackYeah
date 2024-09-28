@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<Template children={<Home/>} />} />
         <Route path="/events" element={<Template children={<Events/>} />} />
         <Route path="/create_event" element={<Template children={<CreateEvent/>} />} />
+        <Route path="/create_event" element={<Template children={<CreateEvent/>} />}/>
         </Routes>
       </Router>
     </>
