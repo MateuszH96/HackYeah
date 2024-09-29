@@ -170,6 +170,107 @@ input[type="text"], textarea,select{
 .event-description p {
   margin: 5px 0 0 0;
 }
+.login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  min-height: 450px;
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: #e5e4e2;
+  border: 10px solid #468B78;
+  border-radius: 40px;
+  gap: 5px; 
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 4px 50px rgba(0,3,4,30);
+  margin-top: 50px;
+  
+}
+.zarejestruj-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  min-height: 450px;
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: #e5e4e2;
+  border: 10px solid #468B78;
+  border-radius: 40px;
+  padding: 30px;
+  gap: 5px; 
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 4px 50px rgba(0,3,4,30);
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+.zaloguj {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  background-color: #e5e4e2; 
+  border-radius: 15px; 
+  padding: 20px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,9); 
+  height: 250px;
+}
+.zarejestruj {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  background-color: #e5e4e2; 
+  border-radius: 15px; 
+  padding: 20px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,9); 
+  height: 350px;
+}
+.input-field{
+  width: 90%;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.9);
+  margin-bottom: 15px;
+}
+.login, .haslo{
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.login-button{
+  border-radius: 5px;
+  height: 55px;
+  width: 100px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: #145B39;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.but-container{
+  display: flex;
+  justify-content: center;  
+  margin-top: -190px;
+}
+.przelacz{
+  border-radius: 5px;
+  height: 55px;
+  width: 100px;
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+  color: white;
+  background-color: #145B39;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+
+
+
 
 @media (max-width:600px){
   .form-container{

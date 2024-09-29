@@ -7,35 +7,43 @@ function LoginRegister() {
         return (
             <div>
                 {loginForm ? (
-                    <>
+                    <div className="login-container">
+                    <h1>Zaloguj się</h1>
+                    <br/>
+                    <div className="zaloguj">                        
                         <div>
-                            <label>Login:</label>
-                            <input type="text" />
+                            <label className="Login">Login:</label>
+                            <input type="text"  className="input-field"/>
                         </div>
                         <div>
-                            <label>Hasło:</label>
-                            <input type="password" />
+                            <label className="Haslo">Hasło:</label>
+                            <input type="password" className="input-field"/>
                         </div>
-                    </>
+                    </div>
+                    </div>
                 ) : (
-                    <>
+                    <div className="zarejestruj-container">
+                        <h1>Zarejestruj sie</h1>
+                        <br/>
+                    <div className="zarejestruj">
                         <div>
-                            <label>Login:</label>
-                            <input type="text" />
+                            <label className="Login">Login:</label>
+                            <input type="text" className="input-field" />
                         </div>
                         <div>
-                            <label>Email:</label>
-                            <input type="email" />
+                            <label className="Email">Email:</label>
+                            <input type="email" className="input-field"/>
                         </div>
                         <div>
-                            <label>Hasło:</label>
-                            <input type="password" />
+                            <label className="Haslo">Hasło:</label>
+                            <input type="password" className="input-field" />
                         </div>
                         <div>
-                            <label>Powtórz hasło:</label>
-                            <input type="password" />
+                            <label className="Haslo">Powtórz hasło:</label>
+                            <input type="password" className="input-field" />
                         </div>
-                    </>
+                    </div>
+                    </div>
                 )}
             </div>
         );
@@ -43,13 +51,15 @@ function LoginRegister() {
 
     return (
         <div>
-            <button onClick={() => setLoginForm(!loginForm)}>
-                {loginForm ? "Przełącz na rejestrację" : "Przełącz na logowanie"}
+            <button className="przelacz"onClick={() => setLoginForm(!loginForm)}>
+                {loginForm ? "Zarejestruj się" : "Zaloguj się"}
             </button>
             {generateInputs()}
-            <button>
-                {loginForm ? "Zaloguj się" : "Zarejestruj się"}
+            <div className="but-container">
+            <button className="login-button">
+                {loginForm ? "Zaloguj" : "Zarejestruj"}
             </button>
+            </div>
         </div>
     );
 }
