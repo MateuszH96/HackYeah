@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import exampleImage7 from '../assets/pierwsza.jpeg'; 
 import exampleImage8 from '../assets/wybierz.jpeg'; 
 import exampleImage9 from '../assets/zapisz.jpeg'; 
 import exampleImage10 from '../assets/zatwierdz.jpeg'; 
-
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 function Home(){
+    const navigate = useNavigate();
+    const { auth, logout } = useContext(AuthContext); 
+    const isAuthenticated = !!auth; 
+
+  
+    const handleClickLink = (page) => {
+      navigate(page)
+    }
+
     return (
         <div>
             <div className="first-cont">
             <div className="photo">
                 <img src={exampleImage7} alt="firstPhoto"/>
             </div>
-            <p className="text-overlay">Wellness and Activity</p>           
+            <p className="text-overlay">WellYEAH</p>           
 
             </div>  
-            <button className="custom-button">Wybierz wydarzenie</button>
+            <button className="custom-button" onClick={() => handleClickLink("/events")}>Wybierz wydarzenie</button>
             <div>
             <div className="opis-strony">
                 <p>Mamy świadomość, że w XXIw coraz bardziej stajemy się samotni oraz otyłość staje się realnym problemem z którym chcielibyśmy walczyć, dlatego my proponujemy idealne rozwiązanie! 
