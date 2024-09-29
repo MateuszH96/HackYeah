@@ -70,7 +70,6 @@ function CreateEvent() {
         <form className="form-container" action="POST">
           <h1>Utwórz wydarzenie!</h1>
           <label className="form-label">Tytuł</label>
-
           <input
             className="form-input"
             type="text"
