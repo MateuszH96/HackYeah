@@ -1,111 +1,55 @@
 import React from "react";
-import exampleImage1 from '../assets/siatka.jpeg'; 
-import exampleImage2 from '../assets/kosz.jpeg'; 
-import exampleImage3 from '../assets/tenis.jpeg'; 
-import exampleImage4 from '../assets/pilkaN.jpeg'; 
+import exampleImage7 from '../assets/pierwsza.jpeg'; 
+import exampleImage8 from '../assets/wybierz.jpeg'; 
+import exampleImage9 from '../assets/zapisz.jpeg'; 
+import exampleImage10 from '../assets/zatwierdz.jpeg'; 
 
 function Home(){
     return (
-        <div className="events-container">
-          <div className="event">
-            <div className="image-circle">
-              <img src={exampleImage1} alt="siatka" />
+        <div>
+            <div className="first-cont">
+            <div className="photo">
+                <img src={exampleImage7} alt="firstPhoto"/>
             </div>
-            <div className="event-description">
-              <h2>Wydarzenia z siatkowki</h2>
-              <p>Zapraszam was do zagrania w siatkówkę:</p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
+            <p className="text-overlay">Wellness and Activity</p>           
+
+            </div>  
+            <button className="custom-button">Wybierz wydarzenie</button>
+            <div>
+            <div className="opis-strony">
+                <p>Mamy świadomość, że w XXIw coraz bardziej stajemy się samotni oraz otyłość staje się realnym problemem z którym chcielibyśmy walczyć, dlatego my proponujemy idealne rozwiązanie! 
+
+                Czy miałeś kiedyś taką sytuację, że chciałeś się podzielić swoją pasją z innymi, ale 
+                Twoi przyjaciele mają już dzieci, biorą ślub, bądź są zanurzeni w swojej codzienności,
+                 albo może sam jesteś pochłonięty rutyną i chciałbyś coś zmienić, 
+                i przejść na aktywną stronę mocy? A może szukasz nowych znajomości albo romantycznej
+                relacji, która będzie mieć podobną pasję do Ciebie? 
+                Oto nasza aplikacja, która przychodzi wam z pomocą, 
+                żebyście w świecie internetu i pogłębiającej się samotności, 
+                mogli wyjść znowu na światło dzienne i poznać wiele wspaniałych nowych znajomości, dzieląc z nimi swoje pasję i zainteresowania.
+
+            </p>
+        
             </div>
-          </div>
-          <div className="event">
-            <div className="image-circle">
-              <img src={exampleImage2} alt="kosz" />
+            <div className="szukajka">
+                <div className="step">
+                    <img src={exampleImage8} alt="szukaj"/>
+                    <p>Znajdź wydarzenie, które Cię interesuje</p>
+                </div>
+                <div className="line"></div> {/* Linia pomiędzy */}
+                <div className="step">
+                    <img src={exampleImage9} alt="zapisz sie"/>
+                    <p>Zapisz się</p>
+                </div>
+                <div className="line"></div> {/* Linia pomiędzy */}
+                <div className="step">
+                    <img src={exampleImage10} alt="zatwierdz"/>
+                    <p>Weź udział</p>
+                </div>
             </div>
-            <div className="event-description">
-              <h2>Wydarzenia z koszykówki</h2>
-              <p>Zapraszam was do zagrania w koszykówkę:
-              <p>Zapraszam was do zagrania w piłkę nożną:
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
-            </div>        
-          </div>
-          <div className="event">
-            <div className="image-circle">
-                <img src={exampleImage3} alt="tenis" />
-            </div>
-            <div className="event-description">
-                <h2>Wydarzenia z tenisa</h2>
-                <p>Zapraszam was do zagrania w tenisa:
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
-            </div>
-          </div>
-          <div className="event">
-            <div className="image-circle">
-                <img src={exampleImage4} alt="pilka" />
-            </div>
-            <div className="event-description">
-                <h2>Wydarzenia z piłki nożnej</h2>
-                <p>Zapraszam was do zagrania w piłkę nożną:
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type
-                 and scrambled it to make a type specimen book.
-                </p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
-            </div>
-          </div>
-          <div className="event">
-            <div className="image-circle">
-                <img src={exampleImage4} alt="pilka" />
-            </div>
-            <div className="event-description">
-                <h2>Wydarzenia z piłki nożnej</h2>
-                <p>Zapraszam was do zagrania w piłkę nożną:
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type
-                 and scrambled it to make a type specimen book.
-                </p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
-            </div>
-          </div>
-          <div className="event">
-            <div className="image-circle">
-                <img src={exampleImage3} alt="tenis" />
-            </div>
-            <div className="event-description">
-                <h2>Wydarzenia z tenisa</h2>
-                <p>Zapraszam was do zagrania w tenisa:
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </p>
-              <p>Data:</p>
-              <p>Kategoria:</p>
-              <p>Lokalizacja:</p>
-              <p>Link:</p>
-            </div>
-          </div>
-          
-          
+        </div>
+        <br/>
+        <br/>
         </div>
       );
     }

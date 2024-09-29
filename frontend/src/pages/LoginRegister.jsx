@@ -17,9 +17,12 @@ function LoginRegister() {
       <div>
         {usernameForm ? (
           <>
+          <div className="zaloguj">
             <div>
+                <h1>Zaloguj się</h1>
               <label>Login:</label>
               <input
+              className="input-login"
                 type="text"
                 value={username}
                 onChange={(e) => setLogin(e.target.value)}
@@ -29,18 +32,23 @@ function LoginRegister() {
             <div>
               <label>Hasło:</label>
               <input
+              className="input-login"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
+            </div>
           </>
         ) : (
           <>
+          <div className="zarejestruj">
             <div>
+                <h1>Zarejestruj się</h1>
               <label>Login:</label>
               <input
+                className="input-login"
                 type="text"
                 value={username}
                 onChange={(e) => setLogin(e.target.value)}
@@ -50,6 +58,7 @@ function LoginRegister() {
             <div>
               <label>Email:</label>
               <input
+                className="input-login"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -59,6 +68,7 @@ function LoginRegister() {
             <div>
               <label>Hasło:</label>
               <input
+                className="input-login"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -68,11 +78,13 @@ function LoginRegister() {
             <div>
               <label>Powtórz hasło:</label>
               <input
+                className="input-login"
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
+            </div>
             </div>
           </>
         )}
@@ -121,14 +133,18 @@ function LoginRegister() {
 
   return (
     <div>
-      <button onClick={() => setLoginForm(!usernameForm)}>
+    <div className="sign-container">
+      <button className="sign-button" onClick={() => setLoginForm(!usernameForm)}>
         {usernameForm ? "Przełącz na rejestrację" : "Przełącz na logowanie"}
       </button>
+      </div>
       <form onSubmit={handleSubmit}>
         {generateInputs()}
-        <button type="submit">
+        <div className="login-container">
+        <button className="login-button" type="submit">
           {usernameForm ? "Zaloguj się" : "Zarejestruj się"}
         </button>
+        </div>
       </form>
     </div>
   );
