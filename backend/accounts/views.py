@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializer import *
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class UserRegistrationAPIView(GenericAPIView):
     permission_classes = (AllowAny,)
@@ -25,13 +26,14 @@ class UserLoginAPIView(GenericAPIView):
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
+        print('dupa1')
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
         serializer = CustomUserSerializer(user)
         token = RefreshToken.for_user(user)
         data = serializer.data
-        data["tokens"] = {"refresh":str(token),
-                            "access":str(token.access_token)}
+        data["tokens"] = {"refresh":str(token),"access":str(token.access_token)}
+        print('dupa2')
         return Response(data, status=status.HTTP_200_OK)
     
 
