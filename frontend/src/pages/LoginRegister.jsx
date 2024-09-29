@@ -1,7 +1,13 @@
-import { useState } from "react";
-import { PATH_LOGIN, PATH_REGISTER, PATH_USER_API, URL_SERVER } from "./API/constant";
+import React, { useState, useContext } from "react"; 
+import {
+  PATH_LOGIN,
+  PATH_REGISTER,
+  PATH_USER_API,
+  URL_SERVER,
+} from "./API/constant";
 import { useNavigate } from "react-router-dom";
 import myApi from "./API/api";
+import { AuthContext } from "./AuthProvider";
 
 function LoginRegister() {
   const [usernameForm, setLoginForm] = useState(true);
@@ -11,6 +17,7 @@ function LoginRegister() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); 
 
   const generateInputs = () => {
     return (
@@ -81,7 +88,7 @@ function LoginRegister() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Zatrzymaj domyślne zachowanie formularza
+    e.preventDefault(); 
     if (usernameForm) {
       const data = {
         email: username,
@@ -91,11 +98,12 @@ function LoginRegister() {
         const url = URL_SERVER + PATH_USER_API + PATH_LOGIN;
         const response = await myApi(url, "POST", data);
         if (response.status === 200) {
-          console.log(response)
+          
+          login(response.data); 
           navigate("/");
         }
       } catch (error) {
-        console.error("Error during create event:", error);
+        console.error("Error during login:", error);
       }
     } else {
       const data = {
@@ -108,13 +116,14 @@ function LoginRegister() {
         const url = URL_SERVER + PATH_USER_API + PATH_REGISTER;
         const response = await myApi(url, "POST", data);
         if (response.status === 201) {
-          console.log(response)
-          localStorage.setItem("accessToken",response.data.tokens.access);
-          localStorage.setItem("refreshToken",response.data.tokens.refresh);
+          
+          login(response.data); 
+          localStorage.setItem("accessToken", response.data.tokens.access);
+          localStorage.setItem("refreshToken", response.data.tokens.refresh);
           navigate("/");
         }
       } catch (error) {
-        console.error("Error during create event:", error);
+        console.error("Error during registration:", error);
       }
     }
   };
